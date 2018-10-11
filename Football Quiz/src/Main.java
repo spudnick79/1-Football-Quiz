@@ -23,43 +23,34 @@ public class Main {
 		case 1:
 			
 			// Questions For Easy
-			
 			String Q1 = "How many receivers has Tom Brady Thrown a TD too in his career?\n" + "(a)73\n(b)71\n(c)69\n";
 			String Q2 = "How many superbowls have the Eagles won?\n" + "(a)1\n(b)5\n(c)3";
-			String randomString = "";
-			int length = 3;
-			Random rand = new Random();	//random class for question strings
-			char[] text  = new char[length];	//character array
+			String Q3 = "The SuperBowl Trophy is named after which Grean Bay Packer Coach" + "(a)Vince Lombardi\n(b)Bill Belichick\n(c)Tony Dungy\n";
 			
-			for (int i = 0; i < length; i++){		//for loop for length 
-				text[i] = Q1.charAt(rand.nextInt(Q1.length()));
-			}
-				
-			for (int i = 0; i < text.length; i++){	//for loop for text
-				randomString += text[i];
-				}
-			
-			final String[] answers = new String[2];	//creates an array for answers //finals used to keep arrays constant
+			final String[] answers = new String[3];	//creates an array for answers //finals used to keep arrays constant
 			answers[0] = "b";
 			answers[1] = "a";
+			answers[2] = "a";
 			
-			final String[] questions = new String[2]; // creates an array for questions
+			final String[] questions = new String[3]; // creates an array for questions
 			questions[0] = Q1;
 			questions[1] = Q2;
+			questions[2] = Q3;
 			
-			takeTest(questions, scan); // call to array of questions
+			takeTest(questions, answers, scan); // call to array of questions
 			break;	
 			
 		}
 	}
 	//takeTest method header and String and Scanner parameter
-	public static int takeTest(String[] answers, Scanner keyboardInput) { // added method to start easy mode test
-		int score = 0;
+	public static int takeTest(String[] questions,String[] answers, Scanner keyboardInput) { // added method to start easy mode test
+	  Random randy = new Random(); //created object for random
+	  int score = 0;
 		for (int i = 0; i < answers.length; i++) { // created for loop to add score
 			
-			System.out.println(answers[i]);
+			System.out.println(questions[randy.nextInt(questions.length-1)]);    //outputting questions randomly
 			String userAnswers = keyboardInput.nextLine();
-			if (userAnswers.equals(answers[i])) {
+			if (userAnswers.equals(answers[(int) i])) {
 
 			score++;	//++ used to increment score
 			
